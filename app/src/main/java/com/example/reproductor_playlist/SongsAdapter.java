@@ -29,7 +29,6 @@ public class SongsAdapter extends RecyclerView.Adapter<SongsAdapter.ViewHolderSo
     ArrayList<SongsData> songsList;
     FirebaseStorage firebaseStorage;
     Bitmap coverBitmap;
-    Context mContext;
     Intent intent;
 
     public SongsAdapter(ArrayList<SongsData> songsList) {
@@ -48,8 +47,8 @@ public class SongsAdapter extends RecyclerView.Adapter<SongsAdapter.ViewHolderSo
         viewHolderSongs.songName.setText(songsList.get(i).getSongName());
         viewHolderSongs.artistName.setText(songsList.get(i).getArtistName());
 
+        // Cargando imagen desde Firebase Storage
         firebaseStorage = FirebaseStorage.getInstance();
-
         firebaseStorage.getReferenceFromUrl(songsList.get(i).getUrlCover())
                 .getBytes(1024*1024).addOnSuccessListener(new OnSuccessListener<byte[]>() {
             @Override
@@ -75,6 +74,7 @@ public class SongsAdapter extends RecyclerView.Adapter<SongsAdapter.ViewHolderSo
             artistName = (TextView) itemView.findViewById(R.id.artistNameID);
             cover = (ImageView) itemView.findViewById(R.id.cdCoverID);
 
+            //Enviamos los datos a la Activity con la vista detalle
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

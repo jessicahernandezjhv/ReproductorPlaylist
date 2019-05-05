@@ -23,6 +23,7 @@ import org.w3c.dom.Text;
 import java.io.IOException;
 
 public class SongDetailView extends AppCompatActivity {
+    // Declaración de variables
     FirebaseStorage firebaseStorage;
     Bitmap bigCoverBitmap;
     MediaPlayer musicPlayer;
@@ -37,6 +38,7 @@ public class SongDetailView extends AppCompatActivity {
         getIncomingIntent();
     }
 
+    //Con este método gestionamos los datos transferidos desde el adapter
     private void getIncomingIntent() {
         if (getIntent().hasExtra("cover_url") &&
                 getIntent().hasExtra("song_name") &&
@@ -61,6 +63,7 @@ public class SongDetailView extends AppCompatActivity {
         cover = findViewById(R.id.detailBigCoverID);
         playBtn = findViewById(R.id.playBtnID);
 
+
         firebaseStorage = FirebaseStorage.getInstance();
         firebaseStorage.getReferenceFromUrl(coverURL)
                 .getBytes(1024 * 1024).addOnSuccessListener(new OnSuccessListener<byte[]>() {
@@ -71,6 +74,7 @@ public class SongDetailView extends AppCompatActivity {
             }
         });
 
+        // Asignamos un listener a la imagen de la portada
         cover.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -83,6 +87,7 @@ public class SongDetailView extends AppCompatActivity {
             }
         });
 
+        //Asignamos un listener al botón play
         playBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -94,6 +99,7 @@ public class SongDetailView extends AppCompatActivity {
         });
     }
 
+    //Método para realizar una animación FadeIn
     private void setFadeAnimation(View view){
         AlphaAnimation anim = new AlphaAnimation(0.0f, 1.0f);
         anim.setDuration(1000);
@@ -101,6 +107,7 @@ public class SongDetailView extends AppCompatActivity {
         view.setVisibility(View.VISIBLE);
     }
 
+    //Método para realizar una animación FadeOut
     private void setFadeOutAnimation(View view){
         AlphaAnimation anim = new AlphaAnimation(1.0f, 0.0f);
         anim.setDuration(1000);
@@ -108,6 +115,7 @@ public class SongDetailView extends AppCompatActivity {
         view.setVisibility(View.INVISIBLE);
     }
 
+    //Método para cargar la música y preparar el reproductor
     private void loadMusic(String songURL) {
         musicPlayer = new MediaPlayer();
         musicPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);

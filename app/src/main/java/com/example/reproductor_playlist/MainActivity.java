@@ -19,10 +19,8 @@ import com.google.firebase.storage.FirebaseStorage;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-
     ArrayList<SongsData> songsList;
     RecyclerView songsRecycler;
-    FirebaseStorage firebaseStorage;
     FirebaseDatabase firebaseDatabase;
     SongsAdapter adapter;
 
@@ -31,10 +29,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Llenar lista con elementos de Firebase Realtime Database
         songsList = new ArrayList<>();
-        songsRecycler = findViewById(R.id.myRecyclerViewID);
-        songsRecycler.setLayoutManager(new LinearLayoutManager((this)));
         loadList();
+
+        songsRecycler = findViewById(R.id.myRecyclerViewID);
+
+        //Asignamos el adapter a nuestra recycler
+        songsRecycler.setLayoutManager(new LinearLayoutManager((this)));
         adapter = new SongsAdapter((songsList));
         songsRecycler.setAdapter(adapter);
     }
@@ -44,8 +46,11 @@ public class MainActivity extends AppCompatActivity {
         firebaseDatabase.getReference().child("playlist").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                //Obtenemos un objeto de la database y lo parseamos con nuestro modelo de datos
                 SongsData song;
                 song = dataSnapshot.getValue(SongsData.class);
+
+                //Añadimos el objeto a la lista
                 songsList.add(song);
                 adapter.notifyDataSetChanged();
             }
