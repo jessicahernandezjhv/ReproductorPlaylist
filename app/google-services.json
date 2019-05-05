@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1032240963981",
+    "firebase_url": "https://reproductorplaylist-56099.firebaseio.com",
+    "project_id": "reproductorplaylist-56099",
+    "storage_bucket": "reproductorplaylist-56099.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1032240963981:android:869720e7a77a9a1f",
+        "android_client_info": {
+          "package_name": "com.example.reproductor_playlist"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1032240963981-tsoa7plpash9q4jgv9lgs2a66v8fkl2e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrqndV314V17YXFuhiFRTN4MckvMvL5Mc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1032240963981-tsoa7plpash9q4jgv9lgs2a66v8fkl2e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
