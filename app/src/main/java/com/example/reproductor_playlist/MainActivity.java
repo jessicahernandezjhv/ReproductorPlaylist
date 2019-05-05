@@ -6,6 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Toast;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -32,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
         songsRecycler = findViewById(R.id.myRecyclerViewID);
         songsRecycler.setLayoutManager(new LinearLayoutManager((this)));
         loadList();
-
         adapter = new SongsAdapter((songsList));
         songsRecycler.setAdapter(adapter);
     }

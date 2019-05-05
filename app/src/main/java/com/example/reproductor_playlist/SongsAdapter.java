@@ -1,5 +1,7 @@
 package com.example.reproductor_playlist;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.annotation.NonNull;
@@ -8,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -26,6 +29,8 @@ public class SongsAdapter extends RecyclerView.Adapter<SongsAdapter.ViewHolderSo
     ArrayList<SongsData> songsList;
     FirebaseStorage firebaseStorage;
     Bitmap coverBitmap;
+    Context mContext;
+    Intent intent;
 
     public SongsAdapter(ArrayList<SongsData> songsList) {
         this.songsList = songsList;
@@ -39,7 +44,7 @@ public class SongsAdapter extends RecyclerView.Adapter<SongsAdapter.ViewHolderSo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final ViewHolderSongs viewHolderSongs, int i) {
+    public void onBindViewHolder(@NonNull final ViewHolderSongs viewHolderSongs, final int i) {
         viewHolderSongs.songName.setText(songsList.get(i).getSongName());
         viewHolderSongs.artistName.setText(songsList.get(i).getArtistName());
 
@@ -53,24 +58,7 @@ public class SongsAdapter extends RecyclerView.Adapter<SongsAdapter.ViewHolderSo
                 viewHolderSongs.cover.setImageBitmap(coverBitmap);
             }
         });
-
-        //viewHolderSongs.cover.setImageBitmap(getBitmapFromURL(songsList.get(i).getUrlCover()));
     }
-
-    /*public static Bitmap getBitmapFromURL(String src) {
-        try {
-            URL url = new URL(src);
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setDoInput(true);
-            connection.connect();
-            InputStream input = connection.getInputStream();
-            Bitmap myBitmap = BitmapFactory.decodeStream(input);
-            return myBitmap;
-        } catch (IOException e) {
-            // Log exception
-            return null;
-        }
-    }*/
 
     @Override
     public int getItemCount() {
@@ -81,11 +69,25 @@ public class SongsAdapter extends RecyclerView.Adapter<SongsAdapter.ViewHolderSo
         TextView songName, artistName;
         ImageView cover;
 
-        public ViewHolderSongs(@NonNull View itemView) {
+        public ViewHolderSongs(@NonNull final View itemView) {
             super(itemView);
             songName = (TextView) itemView.findViewById(R.id.songNameID);
             artistName = (TextView) itemView.findViewById(R.id.artistNameID);
             cover = (ImageView) itemView.findViewById(R.id.cdCoverID);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position = getAdapterPosition();
+
+                    intent = new Intent(view.getContext(), SongDetailView.class);
+                    intent.putExtra("cover_url", songsList.get(position).getUrlCover());
+                    intent.putExtra("song_name", songsList.get(position).getSongName());
+                    intent.putExtra("artist_name", songsList.get(position).getArtistName());
+                    intent.putExtra("song_url", songsList.get(position).getUrlSong());
+                    view.getContext().startActivity(intent);
+                }
+            });
         }
     }
 }

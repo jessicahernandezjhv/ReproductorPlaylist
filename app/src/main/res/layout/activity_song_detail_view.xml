@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".SongDetailView"
+    android:background="@color/darkBackground">
+
+    <TextView
+        android:id="@+id/detailSongNameID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:layout_marginTop="30dp"
+        android:textSize="22dp"
+        android:layout_gravity="center"
+        android:textColor="@android:color/white"
+        android:text="Nombre Cancion"/>
+
+    <TextView
+        android:id="@+id/detailArtistNameID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:textSize="14dp"
+        android:textColor="@color/lightGreen"
+        android:text="Nombre artista"/>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/detailBigCoverID"
+        android:layout_gravity="bottom"
+        android:layout_marginTop="85dp"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@mipmap/ic_launcher" />
+    </android.support.v7.widget.CardView>
+
+    <ImageButton
+        android:id="@+id/playBtnID"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:scaleType="centerCrop"
+        android:background="@null"
+        android:tint="@android:color/white"
+        android:src="@drawable/ic_play_arrow_black_24dp"/>
+</LinearLayout>

@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@color/darkBackground">
 
     <TextView
         android:layout_width="wrap_content"
@@ -13,11 +14,15 @@
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="20dp"
-        android:text="My Playlist" />
+        android:text="MY PLAYLIST"
+        android:textStyle="bold"
+        android:textSize="23dp"
+        android:textColor="@android:color/white"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/myRecyclerViewID"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"></android.support.v7.widget.RecyclerView>
 
 </LinearLayout>

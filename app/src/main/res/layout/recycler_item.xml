@@ -3,7 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:id="@+id/parentLayout">
 
     <ImageView
         android:id="@+id/cdCoverID"
@@ -26,6 +27,7 @@
             android:layout_height="wrap_content"
             android:text="Song Name"
             android:textSize="21sp"
+            android:textColor="@android:color/white"
             android:textStyle="bold"/>
 
         <TextView
@@ -34,6 +36,7 @@
             android:layout_height="wrap_content"
             android:text="Artist"
             android:layout_marginBottom="15dp"
+            android:textColor="@color/lightGreen"
             android:layout_marginRight="10dp"/>
     </LinearLayout>
 </LinearLayout>
