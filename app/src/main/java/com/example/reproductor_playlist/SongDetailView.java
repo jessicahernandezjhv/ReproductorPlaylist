@@ -87,7 +87,7 @@ public class SongDetailView extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                     musicPlayer.start();
-                    cover.animate().scaleY((float) 1.7).scaleX((float) 1.7).setDuration(1000);
+                    cover.animate().scaleY((float) 1.6).scaleX((float) 1.6).setDuration(1000);
                     setFadeOutAnimation(playBtn);
                     //imageView.animate().scaleXBy((float) -1.0).scaleYBy((float) -1.0); // Volver a poner la imagen como estaba
             }
